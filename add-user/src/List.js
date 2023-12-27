@@ -6,7 +6,7 @@ export default function List(props) {
     <ul>
       {props.users.map((user, index) => (
         <li key={index}>
-          {user.name} - {user.age} years old
+          {user.name} - {user.age} years old -{user.collegeName}
         </li>
       ))}
     </ul>

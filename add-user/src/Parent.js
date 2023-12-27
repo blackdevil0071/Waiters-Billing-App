@@ -6,6 +6,7 @@ import List from "./List";
 export default function Parent(props) {
   const nameInputRef = useRef();
   const ageInputRef = useRef();
+  const collegenameInputRef = useRef()
 
   const [error, setError] = useState();
   const [users, setUsers] = useState([]);
@@ -15,8 +16,9 @@ export default function Parent(props) {
 
     const enteredName = nameInputRef.current.value;
     const enteredAge = ageInputRef.current.value;
+    const collegeName = collegenameInputRef.current.value;
 
-    if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
+    if (enteredName.trim().length === 0||collegeName.trim().length===0 || enteredAge.trim().length === 0) {
       setError({ title: "Invalid input", message: "Enter correct input" });
       return;
     }
@@ -29,12 +31,13 @@ export default function Parent(props) {
     // Update the state with the new user
     setUsers((prevUsers) => [
       ...prevUsers,
-      { name: enteredName, age: enteredAge },
+      { name: enteredName, age: enteredAge ,collegeName:collegeName},
     ]);
 
     // Clear the input after submitting
     nameInputRef.current.value = "";
     ageInputRef.current.value = "";
+    collegenameInputRef.current.value = ""
   };
 
   const errorHandler = () => {
@@ -55,6 +58,8 @@ export default function Parent(props) {
         <input type="text" name="userName" ref={nameInputRef} />
         <label>Age</label>
         <input type="number" name="userAge" ref={ageInputRef} />
+        <label>Collegename</label>
+        <input type="text" name="collegeName" ref={collegenameInputRef}/>
         <button type="submit">Add User</button>
       </form>
 
